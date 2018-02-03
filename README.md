@@ -45,7 +45,7 @@ Depends on:
  ansible-galaxy install -r winmasta.grafana/requirements.yml --roles-path .
  ```
 
-   - create file `hosts`, containing hostname(s) or IP address(es) of host(s), where you want to deploy consul server
+   - create file `hosts`, containing hostname(s) or IP address(es) of host(s), where you want to deploy grafana
 
  ```bash
  echo "ENTER HOSTNAME OR IP" > hosts
