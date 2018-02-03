@@ -1,2 +1,5 @@
 ---
-# handlers file for grafana
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted

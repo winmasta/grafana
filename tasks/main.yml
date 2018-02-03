@@ -1,2 +1,12 @@
 ---
-# tasks file for grafana
+- name: Create grafana persistent directory
+  file:
+    path: "{{ CONFIG_DIR }}"
+    state: directory
+    mode: 0755
+
+- name: Start grafana docker container
+  shell: docker stop grafana || true && docker rm grafana || true && \
+         docker run -d --name=grafana -p "{{ GRAFANA_PORT }}":"{{ GRAFANA_PORT }}" \
+         -v "{{ GRAFANA_DIR }}":"{{ GRAFANA_DIR }}" --restart unless-stopped grafana/grafana
+  notify: restart nginx
