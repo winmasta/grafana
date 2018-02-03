@@ -1,7 +1,7 @@
 ---
 - name: Create grafana persistent directory
   file:
-    path: "{{ CONFIG_DIR }}"
+    path: "{{ GRAFANA_DIR }}"
     state: directory
     mode: 0755
 
