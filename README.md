@@ -18,6 +18,15 @@ Role Variables
 GRAFANA_DIR: /var/lib/grafana # Grafana persistent data directory
 GRAFANA_PORT: 3000 # Grafana default UI port
 
+Additional variables, which defined in corresponding roles can be overwritten by adding variables with the same
+name in playbook main.yml vars section. Example:
+
+```yaml
+vars:
+  NGINX_DEFAULT_PASSWD: another_password # This variable will overwrite default variable `NGINX_DEFAULT_PASSWD` in
+                                         # role `winmasta.nginx`
+```
+
 Dependencies
 ------------
 
