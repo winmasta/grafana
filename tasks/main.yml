@@ -6,7 +6,14 @@
     mode: 0755
 
 - name: Start grafana docker container
-  shell: docker stop grafana || true && docker rm grafana || true && \
-         docker run -d --name=grafana -p "127.0.0.1:{{ GRAFANA_PORT }}":"{{ GRAFANA_PORT }}" \
-         -v "{{ GRAFANA_DIR }}":"{{ GRAFANA_DIR }}" --restart unless-stopped grafana/grafana
+  docker_container:
+    name: grafana
+    image: grafana/grafana
+    ports:
+      - "127.0.0.1:{{ GRAFANA_PORT }}:{{ GRAFANA_PORT }}"
+    volumes:
+      - "{{ GRAFANA_DIR }}:{{ GRAFANA_DIR }}"
+    restart_policy: unless-stopped
+    env:
+      GF_SERVER_HTTP_PORT="{{ GRAFANA_PORT }}"
   notify: restart nginx

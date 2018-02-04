@@ -31,7 +31,7 @@ script:
   # Check the playbook's syntax.
   - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
 
-  # Run the playbook with ansible-playbook without TLS.
+  # Run the playbook with ansible-playbook.
   - ansible-playbook -i tests/inventory tests/test.yml -vvvvv
 
 notifications:
